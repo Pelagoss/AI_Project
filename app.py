@@ -8,6 +8,8 @@ import Portail.portail as portail
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
+port = int(os.environ.get('PORT', 5000))
+
 @app.route('/predict/portail')
 def predict_portail():
     return {
@@ -50,4 +52,4 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, ssl_context=('server.crt','server.key'))
+    app.run(host='0.0.0.0', port=port, ssl_context=('server.crt','server.key'))
