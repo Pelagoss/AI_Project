@@ -10,4 +10,4 @@ sklearn
 requests
 Pillow
 gunicorn
-tensorflow
+tensorflow-cpu
