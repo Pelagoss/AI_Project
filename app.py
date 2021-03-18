@@ -5,8 +5,12 @@ from shutil import copyfile
 from flask import Flask, render_template, url_for, redirect
 import Portail.portail as portail
 
+import google_auth
+
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+app.register_blueprint(google_auth.app)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 port = int(os.environ.get('PORT', 5000))
 

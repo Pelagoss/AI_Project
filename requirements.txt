@@ -1,3 +1,4 @@
+authlib
 Flask
 librosa
 numpy
@@ -12,3 +13,5 @@ Pillow
 gunicorn
 tensorflow-cpu
 h5py==2.10.0
+google-api-python-client
+google-auth
