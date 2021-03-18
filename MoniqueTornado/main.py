@@ -42,16 +42,16 @@ if __name__ == "__main__":
 
     # train model
     print("Training..")
-    nn.train(model, X_train, X_test, y_train, y_test, "model/trained_cnn.h5")
+    nn.train(model, X_train, X_test, y_train, y_test, "MoniqueTornado/model/trained_cnn.h5")
 
     # compute test loss and accuracy
-    test_loss, test_accuracy = nn.compute(X_test, y_test, "model/trained_cnn.h5")
+    test_loss, test_accuracy = nn.compute(X_test, y_test, "MoniqueTornado/model/trained_cnn.h5")
     print("Test loss", test_loss)
     print("Test accuracy", test_accuracy)
 
     # predicting using trained model with any test file in dataset
-    nn.predict("audio/Noise/1-30226-A.ogg", le, "model/trained_cnn.h5")
-    nn.predict("MoniqueTornado_1.wav", le, "model/trained_cnn.h5")
-    nn.predict("MT07.wav", le, "model/trained_cnn.h5")
-    nn.predict("MT07_AKRA.wav", le, "model/trained_cnn.h5")
-    nn.predict("MT07_LEO_VINCE.wav", le, "model/trained_cnn.h5")
+    nn.predict("MoniqueTornado/audio/Noise/1-30226-A.ogg", le, "MoniqueTornado/model/trained_cnn.h5")
+    nn.predict("MoniqueTornado/MoniqueTornado_1.wav", le, "MoniqueTornado/model/trained_cnn.h5")
+    nn.predict("MoniqueTornado/MT07.wav", le, "MoniqueTornado/model/trained_cnn.h5")
+    nn.predict("MoniqueTornado/MT07_AKRA.wav", le, "MoniqueTornado/model/trained_cnn.h5")
+    nn.predict("MoniqueTornado/MT07_LEO_VINCE.wav", le, "MoniqueTornado/model/trained_cnn.h5")

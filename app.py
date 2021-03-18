@@ -3,7 +3,7 @@ from datetime import datetime
 from shutil import copyfile
 
 from flask import Flask, render_template, url_for, redirect
-import portail
+import Portail.portail as portail
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
@@ -40,7 +40,7 @@ def train_portail():
 
 @app.route('/train/portail/<string:classe>')
 def set_classe_portail(classe):
-    copyfile('static/output.jpg', os.path.join("camera/"+classe, datetime.now().strftime("%d%m%Y%H%M%S%f")+'.jpg'))
+    copyfile('Portail/static/output.jpg', os.path.join("Portail/camera/"+classe, datetime.now().strftime("%d%m%Y%H%M%S%f")+'.jpg'))
     return redirect(url_for('train_portail'))
 
 

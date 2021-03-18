@@ -48,7 +48,7 @@ def compute(X_test, y_test, model_file):
 
 def predict(filename, le, model_file):
     labels = []
-    with open('model/labels.txt', 'r') as f:
+    with open('MoniqueTornado/model/labels.txt', 'r') as f:
         lines = f.readlines()
     for line in lines:
         label = line.replace('\n', "")

@@ -3,14 +3,14 @@ from PIL import Image, ImageOps
 import numpy as np
 import requests
 
-model = keras.models.load_model('camera/keras_model.h5')
+model = keras.models.load_model('Portail/camera/keras_model.h5')
 
 #URL_CAMERA = 'http://192.168.1.96:81/videostream.cgi?loginuse=admin&loginpas=6969'
 URL_CAMERA = 'http://176.190.181.124:81/snapshot.cgi?user=admin&pwd=6969'
 #cap = cv2.VideoCapture(URL_CAMERA)
 
 labels = []
-with open('camera/labels.txt','r') as f:
+with open('Portail/camera/labels.txt','r') as f:
     lines = f.readlines()
 for line in lines:
     label = (line.split(" ")[1]).replace('\n', "")
@@ -19,14 +19,14 @@ for line in lines:
 
 def predict():
     img_data = requests.get(URL_CAMERA).content
-    with open('static/output.jpg', 'wb') as handler:
+    with open('Portail/static/output.jpg', 'wb') as handler:
         handler.write(img_data)
 
     np.set_printoptions(suppress=True)
 
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
-    image = Image.open('static/output.jpg')
+    image = Image.open('Portail/static/output.jpg')
 
     size = (224, 224)
     image = ImageOps.fit(image, size, Image.ANTIALIAS)

@@ -24,17 +24,17 @@ def float2pcm(sig, dtype='int16'):
 if __name__ == "__main__":
     #labels = ["MoniqueTornado", "Noise"]
     labels = []
-    with open('model/labels.txt', 'r') as f:
+    with open('MoniqueTornado/model/labels.txt', 'r') as f:
         lines = f.readlines()
     for line in lines:
         label = line.replace('\n', "")
         labels.append(f'{colorama.Fore.GREEN}{label}{colorama.Fore.WHITE}')
 
-    model = load_model("model/trained_cnn.h5")
+    model = load_model("MoniqueTornado/model/trained_cnn.h5")
 
     fs = 44100  # Sample rate
     seconds = 4  # Duration of recording
-    file_name = "output/output.wav"
+    file_name = "MoniqueTornado/output/output.wav"
 
     if len(sys.argv) > 1:
         file_name = sys.argv[1]
@@ -42,7 +42,7 @@ if __name__ == "__main__":
         myrecording = sd.rec(int(seconds * fs), samplerate=fs, channels=1)
         sd.wait()  # Wait until recording is finished
 
-        write('output/output.wav', fs, float2pcm(myrecording))
+        write('MoniqueTornado/output/output.wav', fs, float2pcm(myrecording))
 
     print("Testing "+file_name+"...")
 
