@@ -19,14 +19,14 @@ for line in lines:
 
 def predict():
     img_data = requests.get(URL_CAMERA).content
-    with open('Portail/static/output.jpg', 'wb') as handler:
+    with open('static/output.jpg', 'wb') as handler:
         handler.write(img_data)
 
     np.set_printoptions(suppress=True)
 
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
-    image = Image.open('Portail/static/output.jpg')
+    image = Image.open('static/output.jpg')
 
     size = (224, 224)
     image = ImageOps.fit(image, size, Image.ANTIALIAS)

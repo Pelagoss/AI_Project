@@ -42,7 +42,7 @@ def train_portail():
 
 @app.route('/train/portail/<string:classe>')
 def set_classe_portail(classe):
-    copyfile('Portail/static/output.jpg', os.path.join("Portail/camera/"+classe, datetime.now().strftime("%d%m%Y%H%M%S%f")+'.jpg'))
+    copyfile('static/output.jpg', os.path.join("Portail/camera/" + classe, datetime.now().strftime("%d%m%Y%H%M%S%f") + '.jpg'))
     return redirect(url_for('train_portail'))
 
 
