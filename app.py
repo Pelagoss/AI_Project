@@ -2,7 +2,7 @@ import os
 from datetime import datetime
 from shutil import copyfile
 
-from flask import Flask, render_template, url_for, redirect
+from flask import Flask, render_template, url_for, redirect, jsonify, make_response
 import Portail.portail as portail
 
 import google_auth
@@ -14,28 +14,9 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 port = int(os.environ.get('PORT', 5000))
 
-@app.route('/predict/portail')
+@app.route('/predict/portail', methods=['GET', 'POST'])
 def predict_portail():
-    return {
-  "session": {
-    "id": "example_session_id",
-    "params": {}
-  },
-  "prompt": {
-    "override": False,
-    "firstSimple": {
-      "speech": "Le portail est "+portail.predict()[0],
-      "text": ""
-    }
-  },
-  "scene": {
-    "name": "SceneName",
-    "slots": {"status":"FINAL"},
-    "next": {
-      "name": "actions.scene.END_CONVERSATION"
-    }
-  }
-}
+    return make_response(jsonify({'fulfillmentText': portail.predict()[0]}))
 
 
 @app.route('/train/portail')
