@@ -9,4 +9,3 @@ colorama
 sklearn
 requests
 Pillow
-tensorflow
