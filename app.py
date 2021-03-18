@@ -16,7 +16,7 @@ port = int(os.environ.get('PORT', 5000))
 
 @app.route('/predict/portail', methods=['GET', 'POST'])
 def predict_portail():
-    return make_response(jsonify({'fulfillmentText': portail.predict()[0]}))
+    return make_response(jsonify({'fulfillmentText': 'Le portail est '+portail.predict()[0]}))
 
 
 @app.route('/train/portail')
@@ -27,7 +27,7 @@ def train_portail():
 
 @app.route('/train/portail/<string:classe>')
 def set_classe_portail(classe):
-    copyfile('static/output.jpg', os.path.join("Portail/camera/" + classe.lower(), datetime.now().strftime("%d%m%Y%H%M%S%f") + '.jpg'))
+    copyfile('static/output.jpg', "Portail/camera/" + classe.lower() + datetime.now().strftime("%d%m%Y%H%M%S%f") + '.jpg')
     return redirect(url_for('train_portail'))
 
 
