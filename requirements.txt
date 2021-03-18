@@ -9,3 +9,5 @@ colorama
 sklearn
 requests
 Pillow
+gunicorn
+tensorflow
