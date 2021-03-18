@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+        <title>ModelPrediction</title>
+    <link rel="shortcut icon" href="https://user-images.githubusercontent.com/16105138/84585338-60096080-ae52-11ea-936c-1ac80df2f092.png">
+    <link href="https://fonts.googleapis.com/css2?family=Squada+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='connection.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="page">
+    <div class="container">
+      <div class="left">
+        <img src="{{ url_for('static', filename='output.jpg') }}" style="border: solid 2px #FFF;">
+      </div>
+      <div class="right">
+            <div class="eula">Class predicted : <span class="badge bg-warning">{{predicted}}</span></div>
+          <div class="form">
+              Select from which class this picture is : <br>
+            {% for label in labels %}
+                    <a class="btn btn-success" role="button" href="portail/{{ label }}">{{ label }}</a>
+            {% endfor %}
+          </div>
+          <div class="eula">
+              <a class="btn btn-info" role="button" href="portail">Refresh image</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
