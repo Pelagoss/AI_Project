@@ -4,6 +4,7 @@ from shutil import copyfile
 
 from flask import Flask, render_template, url_for, redirect, jsonify, make_response
 import Portail.portail as portail
+import Portail.actions as portail_actions
 
 import google_auth
 
@@ -27,13 +28,23 @@ def train_portail():
 
 @app.route('/train/portail/<string:classe>')
 def set_classe_portail(classe):
-    copyfile('static/output.jpg', "Portail/camera/" + classe.lower() + datetime.now().strftime("%d%m%Y%H%M%S%f") + '.jpg')
+    copyfile('static/output.jpg', "Portail/camera/" + classe.lower() + '/' + datetime.now().strftime("%d%m%Y%H%M%S%f") + '.jpg')
     return redirect(url_for('train_portail'))
 
 
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
+
+
+@app.route('/api/open')
+def open():
+    return portail_actions.open()
+
+
+@app.route('/api/close')
+def close():
+    return portail_actions.close()
 
 
 if __name__ == '__main__':
